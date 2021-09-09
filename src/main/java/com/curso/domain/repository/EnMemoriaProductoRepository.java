@@ -46,5 +46,24 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
 	public List<Producto> getAllProductos() {
 		return listaDeProductos;
 	}
+	  public Producto getProductoPorId(String idProducto) {
+	        Producto productoProId = null;
+
+	        for (Producto producto : listaDeProductos) {
+	            if (producto != null && producto.getIdProducto() != null
+	                    && producto.getIdProducto().equals(idProducto)) {
+	                productoProId = producto;
+	                break;
+	            }
+	        }
+
+	        if (productoProId == null) {
+	            throw new IllegalArgumentException("No se ha encontrado un "
+	                    + "productos con el id: " + idProducto);
+	        }
+
+	        return productoProId;
+	    }
+
 
 }

@@ -47,13 +47,13 @@ public class Producto implements Serializable {
         this.nombre = nombre;
     }
 
-    public BigDecimal getPrecionUnitario() {
+    public BigDecimal getPrecioUnitario() {
         return precionUnitario;
     }
 
-    public void setPrecionUnitario(BigDecimal precionUnitario) {
+    public void setPrecioUnitario(BigDecimal precionUnitario) {
         this.precionUnitario = precionUnitario;
-    }
+    } 
 
     public String getDescripción() {
         return descripcion;

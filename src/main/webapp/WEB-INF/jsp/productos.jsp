@@ -27,8 +27,14 @@
                             <div class="caption">
                                 <h3>${producto.nombre}</h3>
                                 <p>${producto.descripcion}</p>
-                                <p>${producto.precionUnitario} €</p>
+                                <p>${producto.precioUnitario} €</p>
                                 <p>Hay  ${producto.unidadesEnStock} unidades in stock</p>
+                            <p> 
+                           <a href="producto?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
+                             Ver Producto 
+                        </a> 
+                      
+                    </p> 
                             </div>
                         </div>
                     </div>

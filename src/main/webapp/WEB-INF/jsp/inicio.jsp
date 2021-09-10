@@ -14,6 +14,6 @@
 			</div>
 		</div>
 	</section>
-	<a class="btn btn-default" href="productos" role="button">Productos</a>
+	<a class="btn btn-default" href="comercio/productos" role="button">Productos</a>
 </body> 
 </html>

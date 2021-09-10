@@ -1,16 +1,24 @@
 package com.curso.controller;
 
 import com.curso.domain.Producto;
+import com.curso.excepcion.GestionProductoException;
 import com.curso.service.ProductoService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("comercio")
@@ -68,15 +76,43 @@ public class ProductoController {
 	
 	
 	// tratara los datos recibidos del formulario
-	@RequestMapping(value = "/productos/nuevo", method = RequestMethod.POST)
+	@RequestMapping(value = "/productos/nuevo", 
+			        method = RequestMethod.POST)
 	public String procesarCrearNuevoProductoFormulario(
-			@ModelAttribute("nuevoProducto") Producto nuevoProducto) {
+			@ModelAttribute("nuevoProducto") 
+			@Valid Producto nuevoProducto,
+			BindingResult bindingResult) {
 		
-		productoService.crearProducto(nuevoProducto);
+		//comprobar que es valido 
+		if (bindingResult.hasErrors()) {
+			System.out.println("error  " + bindingResult.getAllErrors());
+			
+			return "redirect:/comercio/productos/nuevo";
+		}
+		
+	
+		 productoService.crearProducto(nuevoProducto);
+
 		// model.addAttribute("productos",
 		// productoService.getTodosProductos());
 		// return "productos";
 		return "redirect:/comercio/productos"; 
 	}
+	
+	@ExceptionHandler(GestionProductoException.class)
+    public ModelAndView handleError(
+    		HttpServletRequest req,
+    		GestionProductoException exception) {
+ 
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("idProductoNoEncontrado", 
+                exception.getIdProducto());
+        mav.addObject("claveMensage", 
+                exception.getClaveMensaje());
+        mav.setViewName("producto-exception");
+        return mav;
+    }
+	
+	
 
 }

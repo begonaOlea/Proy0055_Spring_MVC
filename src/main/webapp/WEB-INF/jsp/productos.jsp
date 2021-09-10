@@ -32,14 +32,23 @@
                             <p> 
                            <a href="producto?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
                              Ver Producto 
-                        </a> 
+                           </a> 
                       
+                    	 
                     </p> 
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
+            <div class="row">
+              <a href="productos/nuevo" class="btn btn-warning btn-large"> 
+                 Nuevo
+              </a> 
+             </div>
+                           
+         </section>
         </section>
+        
     </body>
 </html>

@@ -36,4 +36,9 @@ public class ProductoServiceImpl implements ProductoService {
       Producto producto =productoRepositorio.getProductoPorId(idProducto);
       return producto;
     }
+    
+    @Override
+    public void crearProducto(Producto producto) {
+       productoRepositorio.crearProducto(producto);
+    }
 }

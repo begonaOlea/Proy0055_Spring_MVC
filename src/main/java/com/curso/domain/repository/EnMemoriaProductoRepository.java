@@ -77,6 +77,11 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
         }
         return productosEncontrados;
     }
+    
+    @Override
+    public void crearProducto(Producto producto) {
+        this.listaDeProductos.add(producto);
+    }
 
 
 }

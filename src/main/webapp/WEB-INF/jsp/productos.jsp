@@ -37,13 +37,11 @@
                             <a href="${url}" class="btn btn-warning btn-large"> 
                              Pedir 1 unidad ya
                            </a> 
-                            
-                            
-                            
+            
                            <a href="producto?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
                              Ver Producto 
                            </a> 
-                      
+                      	
                     	 
                     </p> 
                             </div>

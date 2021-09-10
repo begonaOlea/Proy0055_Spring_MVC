@@ -5,6 +5,7 @@ import com.curso.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,20 +38,36 @@ public class ProductoController {
 		return "productos";
 	}
 
+	
+	//   locahost:8080/NombrProy/producto?id=P234
+	
 	@RequestMapping("/producto")
-	public String getProductoPorId(@RequestParam("id") String productId, Model model) {
-		model.addAttribute("producto", productoService.getProductoPorId(productId));
+	//@RequestMapping(method = RequestMethod.GET, path = "/producto")
+	//@GetMapping("/producto")
+	public String getProductoPorId(
+			@RequestParam("id") String productId, 
+			Model model) {
+		model.addAttribute("producto", 
+				 productoService.getProductoPorId(productId));
 		return "producto";
 	}
 
 //PRÁCTICA 7
+	
+	
+	
+	// mostra el fomulario
 	@RequestMapping(value = "/productos/nuevo", method = RequestMethod.GET)
 	public String getCrearNuevoProductoFormulario(Model model) {
 		Producto nuevoProducto = new Producto();
+		nuevoProducto.setDescripcion("nuevo");
 		model.addAttribute("nuevoProducto", nuevoProducto);
 		return "crear-producto";
 	}
 
+	
+	
+	// tratara los datos recibidos del formulario
 	@RequestMapping(value = "/productos/nuevo", method = RequestMethod.POST)
 	public String procesarCrearNuevoProductoFormulario(
 			@ModelAttribute("nuevoProducto") Producto nuevoProducto) {

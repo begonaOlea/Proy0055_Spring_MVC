@@ -24,12 +24,12 @@
         <section class="container"> 
             <form:form  method="POST" modelAttribute="nuevoProducto"               class="form-horizontal"> 
                 <fieldset> 
-                    <legend>Crear un nuevo producto</legend> 
+                    <legend><spring:message code="producto.alta.titulo" /></legend> 
 
                     <div class="form-group"> 
                         <label class="control-label col-lg-2 col-lg-2" 
                             for="idProducto">
-                            <spring:message code="producto.idProducto" />
+                           *<spring:message code="producto.idProducto" />
                         </label> 
                         <div class="col-lg-10"> 
                             <form:input id="idProducto" path="idProducto"                           type="text" class="form:input-large"/> 

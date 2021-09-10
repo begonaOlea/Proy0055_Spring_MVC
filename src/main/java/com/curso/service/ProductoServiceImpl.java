@@ -10,19 +10,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
-     @Autowired
+  
+	@Autowired
     private ProductoRepository productoRepositorio;
-
-    public ProductoServiceImpl() {
-        System.out.println("........... intanciando ProductoServiceImpl");
-    }
-
-     
      
     @Override
     public List<Producto> getTodosProductos() {
        return productoRepositorio.getAllProductos();
     }
+    
+    
+    
+    
     
     @Override
     public List<Producto> getProductosPorCategoria(String categoria) {

@@ -13,8 +13,15 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public void generarPedido(String idProducto, int cantidad) {
-        Producto producto = productoRepositorio.getProductoPorId(idProducto);
+        
+    	//validar pararam entrda idProducro no null cntida < 1
+    	
+    	Producto producto = productoRepositorio.getProductoPorId(idProducto);
 
+    	if (producto == null) {
+    		throw new IllegalArgumentException("El producto no existe");
+    	}
+    	
         if (producto.getUnidadesEnStock()< cantidad) {
             throw new IllegalArgumentException("Fuera de Stock. "
                     + "Hay disponibles actualmente " 

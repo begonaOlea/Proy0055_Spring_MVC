@@ -14,6 +14,9 @@
 			</div>
 		</div>
 	</section>
-	<a class="btn btn-default" href="comercio/productos" role="button">Productos</a>
+	
+	<a href="comercio/productos" class="btn btn-primary btn-lg active" 
+	   role="button">Productos</a>
+	   
 </body> 
 </html>

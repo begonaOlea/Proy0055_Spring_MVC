@@ -44,7 +44,10 @@
                     </p> 
                     <h4>${producto.precioUnitario} €</h4> 
                     <p> 
-	                   <a href="/pedido/${producto.idProducto}/1" class="btn btn-warning btn-large"> 
+                    
+                     <spring:url value="/pedido/${producto.idProducto}/1" var="url" />
+                     <a href="${ url }"
+                        class="btn btn-warning btn-large"> 
 	                       <span class="glyphicon-shopping-cart glyphicon">         
 	                       </span> Realizar un Pedido 
 	                   </a> 

@@ -87,10 +87,9 @@ public class ProductoController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("error  " + bindingResult.getAllErrors());
 			
-			return "redirect:/comercio/productos/nuevo";
+			return "crear-producto";  //no usar redirect se pierden los erros
 		}
-		
-	
+
 		 productoService.crearProducto(nuevoProducto);
 
 		// model.addAttribute("productos",
@@ -109,6 +108,7 @@ public class ProductoController {
                 exception.getIdProducto());
         mav.addObject("claveMensage", 
                 exception.getClaveMensaje());
+        
         mav.setViewName("producto-exception");
         return mav;
     }

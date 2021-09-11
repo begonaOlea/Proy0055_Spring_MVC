@@ -20,7 +20,8 @@
                     <spring:message code="${claveMensage}" 
                                     arguments="${idProductoNoEncontrado}" />
                     --%>
-                    
+                    <!--  se ve en el navegador -->
+                    <%--  comentario jsp - no se ve en el navegador  --%>
                     
                 </h1> 
             </div> 

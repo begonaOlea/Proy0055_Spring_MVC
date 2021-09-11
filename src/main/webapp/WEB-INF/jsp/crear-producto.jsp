@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html> 
     <head> 
-        <link rel="stylesheet"
-              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <title>Alta Nuevo Producto</title> 
     </head> 
     <body> 
@@ -26,16 +26,15 @@
                 <fieldset> 
                     <legend><spring:message code="producto.alta.titulo" /></legend> 
 
-
                     <div class="form-group"> 
                         <label class="control-label col-lg-2 col-lg-2" 
                             for="idProducto">
-                           *<spring:message code="producto.idProducto" />
+                             <spring:message code="producto.idProducto" />
                           
                         </label> 
                         <div class="col-lg-10"> 
                             <form:input id="idProducto" path="idProducto" type="text" class="form:input-large"/>   
-                         ** <form:errors path="idProducto" cssClass="text-danger"/>                        
+                            <form:errors path="idProducto" cssClass="text-danger"/>                        
                         </div> 
                         
                     </div>

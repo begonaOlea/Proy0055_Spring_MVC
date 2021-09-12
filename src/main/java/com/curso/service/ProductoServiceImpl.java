@@ -8,12 +8,15 @@ import com.curso.excepcion.GestionProductoException;
 import java.io.Serializable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
   
 	@Autowired
+	//@Qualifier("InMemoryProductosRepository")
+	@Qualifier("JPAProductosRepository")
     private ProductoRepository productoRepositorio;
      
     @Override
@@ -40,15 +43,14 @@ public class ProductoServiceImpl implements ProductoService {
     
     @Override
     public void crearProducto(Producto producto) {
-    	
-    	try {
-    		Producto p = productoRepositorio.getProductoPorId(producto.getIdProducto());
-    		throw new GestionProductoException(producto.getIdProducto(),
-     			   "No pudo crear . ya existe el producto con id ");
-    	}catch(IllegalArgumentException e) { //el id no existe
-    		//correcto como no hay creo
-    		 productoRepositorio.crearProducto(producto); 
-       }
- 
+
+    	Producto p = productoRepositorio.getProductoPorId(producto.getIdProducto());
+    	if( p != null) {
+	    	throw new GestionProductoException(producto.getIdProducto(),
+	     			   "No pudo crear . ya existe el producto con id ");
+    	}
+
+    	productoRepositorio.crearProducto(producto); 
+
     }
 }

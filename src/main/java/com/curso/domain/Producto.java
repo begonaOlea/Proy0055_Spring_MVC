@@ -3,13 +3,28 @@ package com.curso.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name="PRODUCTOS")
+@NamedQueries({
+    @NamedQuery(name = "Producto.findAll", 
+    		    query = "SELECT p FROM Producto p"),
+    @NamedQuery(name = "Producto.findByCategoria", 
+    		query = "SELECT p FROM Producto p WHERE p.categoria = :categoria")
+})
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
     @NotNull
 	@Size(min=5, max=10)
     private String idProducto;
@@ -21,6 +36,7 @@ public class Producto implements Serializable {
     private String categoria;
     private long unidadesEnStock;
     private long unidadesEnPedido;
+    @Transient
     private boolean disponible;
     private String condiciones;
     

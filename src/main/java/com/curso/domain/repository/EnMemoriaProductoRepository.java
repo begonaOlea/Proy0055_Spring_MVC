@@ -5,9 +5,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Qualifier("InMemoryProductosRepository")
 public class EnMemoriaProductoRepository implements ProductoRepository {
 
     private List<Producto> listaDeProductos = new ArrayList<Producto>();
@@ -41,22 +44,22 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
     }
 
     public Producto getProductoPorId(String idProducto) {
-        Producto productoProId = null;
+        Producto productoEnc = null;
 
         for (Producto producto : listaDeProductos) {
             if (producto != null && producto.getIdProducto() != null
                     && producto.getIdProducto().equals(idProducto)) {
-                productoProId = producto;
+            	productoEnc = producto;
                 break;
             }
         }
 
-        if (productoProId == null) {
-            throw new IllegalArgumentException("No se ha encontrado un "
-                    + "productos con el id: " + idProducto);
-        }
+//        if (productoProId == null) {
+//            throw new IllegalArgumentException("No se ha encontrado un "
+//                    + "productos con el id: " + idProducto);
+//        }
 
-        return productoProId;
+        return productoEnc;
     }
 
     @Override

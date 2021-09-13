@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Alta Nuevo Producto</title>
+<title>Modificar Producto</title>
 </head>
 <body>
 <body>
@@ -22,12 +22,12 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Productos</h1>
-				<p>Alta Nuevo Producto</p>
+				<p>Modificar Producto</p>
 			</div>
 		</div>
 	</section>
 	<section class="container">
-		<form:form method="POST" modelAttribute="nuevoProducto"
+		<form:form method="POST" modelAttribute="productoModif"
 			class="form-horizontal">
 			<fieldset>
 				<legend>
@@ -69,7 +69,7 @@
 					</div>
 				</div>
 
-	
+			
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="fabricante">Fabricante
 					</label>
@@ -78,6 +78,7 @@
 							class="form:input-large" />
 					</div>
 				</div>
+		
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="categoria">Categoría</label>
 					<div class="col-lg-10">
@@ -124,14 +125,16 @@
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnCrear"
+						<input type="submit" id="btnModif"
 							class="btn 
                                    btn-primary"
-							value="Crear Nuevo" />
+							value="Guardar Cambios" />
 					</div>
 				</div>
 			</fieldset>
+
 		</form:form>
 	</section>
 </body>
 </html>
+

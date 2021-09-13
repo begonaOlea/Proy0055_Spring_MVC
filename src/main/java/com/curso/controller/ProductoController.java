@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -99,6 +100,47 @@ public class ProductoController {
 		return "redirect:/comercio/productos"; 
 	}
 	
+	
+	//  href="producto/edit?id" + ${producto.idProducto}
+	// mostra el fomulario
+		@GetMapping(value = "/producto/edit")
+		public String getModifProductoFormulario(
+				@RequestParam("id") String productId,
+				Model model) {
+			Producto prodModif =   productoService.getProductoPorId(productId);
+
+			if(prodModif == null) {
+				throw new GestionProductoException(productId,"El producto no existe");
+			}
+			
+			model.addAttribute("productoModif", prodModif);
+			return "modif-producto";
+		}
+
+		@GetMapping(value = "/producto/delete")
+		public String borrarProducto(
+				@RequestParam("id") String productId) {
+		
+			productoService.borrar(productId);
+			return "redirect:/comercio/productos"; 
+		}
+		
+		
+		// tratara los datos recibidos del formulario
+		@PostMapping(value = "/producto/edit")
+		public String procesarModificarProductoFormulario(
+				@ModelAttribute("productoModif") @Valid Producto productoModif,
+				BindingResult bindingResult) {
+			
+			//comprobar que es valido 
+			if (bindingResult.hasErrors()) {
+				return "modif-producto";  
+			}
+
+			productoService.modificar(productoModif);
+			return "redirect:/comercio/productos"; 
+		}
+
 	@ExceptionHandler(GestionProductoException.class)
     public ModelAndView handleError(
     		HttpServletRequest req,

@@ -49,18 +49,18 @@
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
         <property name="url" value="jdbc:oracle:thin:@localhost:49161:xe" />
-        <property name="username" value="system" />
-        <property name="password" value="oracle" />
+        <property name="username" value="system" /> 
+        <property name="password" value="oracle" /> 
     </bean>
     
-    <!-- factoria de EntityManager de JPA -->
+    
+    <!-- factoria de EntityManager de JPA  -  sustituye persiste.xml -->
     <bean id="miEntityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- property name="annotatedClasses"
                   value="com.curso.domain.Producto" / -->
-        <property name="packagesToScan" 
-                  value="com.curso.domain"/>
+        <property name="packagesToScan" value="com.curso.domain"/>
         <property name="jpaVendorAdapter">
           <bean  class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>

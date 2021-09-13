@@ -87,5 +87,17 @@ public class EnMemoriaProductoRepository implements ProductoRepository {
         return producto;
     }
 
+	@Override
+	public Producto modificarProducto(Producto producto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void borrarProducto(String idProducto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

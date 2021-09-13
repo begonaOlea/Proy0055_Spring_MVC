@@ -18,6 +18,7 @@ public class ProductoServiceImpl implements ProductoService {
 	//@Qualifier("InMemoryProductosRepository")
 	@Qualifier("JPAProductosRepository")
     private ProductoRepository productoRepositorio;
+	
      
     @Override
     public List<Producto> getTodosProductos() {
@@ -42,7 +43,7 @@ public class ProductoServiceImpl implements ProductoService {
     }
     
     @Override
-    public void crearProducto(Producto producto) {
+    public Producto crearProducto(Producto producto) {
 
     	Producto p = productoRepositorio.getProductoPorId(producto.getIdProducto());
     	if( p != null) {
@@ -50,7 +51,22 @@ public class ProductoServiceImpl implements ProductoService {
 	     			   "No pudo crear . ya existe el producto con id ");
     	}
 
-    	productoRepositorio.crearProducto(producto); 
+    	return productoRepositorio.crearProducto(producto); 
 
     }
+
+
+	@Override
+	public Producto modificar(Producto producto) {
+		return productoRepositorio.modificarProducto(producto);
+	}
+
+
+	@Override
+	public void borrar(String id) {
+		//borrar producto . e interario
+		productoRepositorio.borrarProducto(id);
+		
+		
+	}
 }

@@ -36,6 +36,7 @@ public class Producto implements Serializable {
     private String categoria;
     private long unidadesEnStock;
     private long unidadesEnPedido;
+   
     @Transient
     private boolean disponible;
     private String condiciones;

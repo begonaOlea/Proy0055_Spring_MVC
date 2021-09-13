@@ -51,5 +51,20 @@ public class JPAProductoRepository implements ProductoRepository {
 		return producto;
 	}
 	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Producto modificarProducto(Producto producto) {
+		Producto pBD = entityManager.find(Producto.class, producto.getIdProducto());
+		entityManager.merge(producto);
+		return pBD;
+	}
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void borrarProducto(String idProducto) {
+		Producto pBD = entityManager.find(Producto.class, idProducto);
+		entityManager.remove(pBD);
+	}
+	
 
 }

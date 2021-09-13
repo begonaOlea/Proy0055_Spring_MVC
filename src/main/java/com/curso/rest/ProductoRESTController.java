@@ -8,58 +8,57 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import com.curso.domain.Producto;
 import com.curso.domain.repository.ProductoRepository;
 import com.curso.excepcion.GestionProductoException;
+import com.curso.service.ProductoService;
 
 @RestController
 public class ProductoRESTController {
 
 	@Autowired
-	@Qualifier("JPAProductosRepository")
-	private ProductoRepository repositorio;
+	private ProductoService servicio;
 
-
-	
-	  @GetMapping("/products")
+	  @GetMapping("/rest/productos")
 	  public List<Producto> all() {
-	    return repositorio.getAllProductos();
+	    return servicio.getTodosProductos();
 	  }
 	  
 
-	  @PostMapping("/products")
+	  @PostMapping("/rest/productos")
 	  public  Producto nuevoProducto(@RequestBody Producto nuevoProducto) {
-	    return repositorio.crearProducto(nuevoProducto);
+	    return servicio.crearProducto(nuevoProducto);
 	  }
 
 	  // Single item
 	  
-	  @GetMapping("/products/{id}")
+	  @GetMapping("/rest/productos/{id}")
 	  public  Producto getProducto(@PathVariable String id) {
 	    
-	    Producto producto = repositorio.getProductoPorId(id);
+	    Producto producto = servicio.getProductoPorId(id);
 	    if (producto == null) {
 	    	throw new GestionProductoException(id, "Producto no encontrado");
 	    }
 	    return producto;
 	  }
 
-	  @PutMapping("/products/{id}")
+	  //modificar
+	  @PutMapping("/rest/productos/{id}")
 	  public  Producto  modificarProdu(@RequestBody Producto productoModificado, 
 			                           @PathVariable String id) {
 	    
-	    //TODO: implementar
-		  return null;
+	      Producto modif = servicio.modificar(productoModificado);
+		  return modif;
 	  }
 
 	  @DeleteMapping("/products/{id}")
 	  public void deleteEmployee(@PathVariable String id) {
-	    //TODO implementar
-		  
+	       servicio.borrar(id);
 	  }
+	  
+	  
 
 
 }

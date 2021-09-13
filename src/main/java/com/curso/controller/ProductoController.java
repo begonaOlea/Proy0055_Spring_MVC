@@ -65,7 +65,7 @@ public class ProductoController {
 	
 	
 	// mostra el fomulario
-	@RequestMapping(value = "/productos/nuevo", method = RequestMethod.GET)
+	@GetMapping(value = "/productos/nuevo")
 	public String getCrearNuevoProductoFormulario(Model model) {
 		Producto nuevoProducto = new Producto();
 		nuevoProducto.setDescripcion("nuevo");
@@ -83,10 +83,11 @@ public class ProductoController {
 			@Valid Producto nuevoProducto,
 			BindingResult bindingResult) {
 		
+		
+		
 		//comprobar que es valido 
 		if (bindingResult.hasErrors()) {
-			System.out.println("error  " + bindingResult.getAllErrors());
-			
+			//nuevoProducto.setDescripcion("error");
 			return "crear-producto";  //no usar redirect se pierden los erros
 		}
 

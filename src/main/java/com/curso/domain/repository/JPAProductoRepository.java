@@ -45,14 +45,14 @@ public class JPAProductoRepository implements ProductoRepository {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.MANDATORY)
 	public Producto crearProducto(Producto producto) {
 		entityManager.persist(producto);
 		return producto;
 	}
 	
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.MANDATORY)
 	public Producto modificarProducto(Producto producto) {
 		Producto pBD = entityManager.find(Producto.class, producto.getIdProducto());
 		entityManager.merge(producto);
@@ -60,7 +60,7 @@ public class JPAProductoRepository implements ProductoRepository {
 	}
 	
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void borrarProducto(String idProducto) {
 		Producto pBD = entityManager.find(Producto.class, idProducto);
 		entityManager.remove(pBD);

@@ -41,7 +41,12 @@
                            <a href="producto?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
                              Ver Producto 
                            </a> 
-                      	
+                           <a href="producto/edit?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
+                             Modificar Producto 
+                           </a> 
+                      	    <a href="producto/delete?id=${producto.idProducto}" class="btn btn-warning btn-large"> 
+                             Borrar Producto 
+                           </a> 
                     	 
                     </p> 
                             </div>

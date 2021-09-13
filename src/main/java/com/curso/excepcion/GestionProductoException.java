@@ -1,6 +1,6 @@
 
 package com.curso.excepcion;
-
+//hace rollback
 public class GestionProductoException 
     extends RuntimeException {
 

@@ -53,12 +53,10 @@ public class ProductoRESTController {
 		  return modif;
 	  }
 
-	  @DeleteMapping("/products/{id}")
+	  @DeleteMapping("/rest/productos/{id}")
 	  public void deleteEmployee(@PathVariable String id) {
 	       servicio.borrar(id);
 	  }
-	  
-	  
 
 
 }

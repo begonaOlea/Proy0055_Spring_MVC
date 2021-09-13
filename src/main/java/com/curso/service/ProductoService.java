@@ -12,4 +12,8 @@ public interface ProductoService {
     Producto crearProducto(Producto producto);
     Producto modificar(Producto producto);
     void borrar(String id);
+    
+    void cambiarPrecio(List<Producto> productos, double nuevoPrecio);
+    
+    
 }

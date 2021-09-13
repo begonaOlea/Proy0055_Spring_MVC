@@ -9,5 +9,6 @@ public interface ProductoRepository {
     List <Producto> getAllProductos();
     Producto getProductoPorId(String idProducto);
     List<Producto> getProductosPoCategoria(String categoria);
-    void crearProducto(Producto producto) ;
+    Producto crearProducto(Producto producto) ;
+    
 }

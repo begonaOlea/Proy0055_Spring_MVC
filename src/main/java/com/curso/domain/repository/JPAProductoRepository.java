@@ -46,8 +46,10 @@ public class JPAProductoRepository implements ProductoRepository {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void crearProducto(Producto producto) {
+	public Producto crearProducto(Producto producto) {
 		entityManager.persist(producto);
+		return producto;
 	}
+	
 
 }

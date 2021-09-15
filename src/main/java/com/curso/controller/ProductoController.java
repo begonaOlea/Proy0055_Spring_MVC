@@ -40,6 +40,7 @@ public class ProductoController {
 		return "productos";
 	}
 
+	
 	@RequestMapping("/productos/{categoria}")
 	public String getProductosPorCategoria(Model model, @PathVariable("categoria") String categoriaProducto) {
 
@@ -112,32 +113,27 @@ public class ProductoController {
 			if(prodModif == null) {
 				throw new GestionProductoException(productId,"El producto no existe");
 			}
-			
 			model.addAttribute("productoModif", prodModif);
 			return "modif-producto";
 		}
-
-		@GetMapping(value = "/producto/delete")
-		public String borrarProducto(
-				@RequestParam("id") String productId) {
 		
-			productoService.borrar(productId);
-			return "redirect:/comercio/productos"; 
-		}
-		
-		
-		// tratara los datos recibidos del formulario
 		@PostMapping(value = "/producto/edit")
 		public String procesarModificarProductoFormulario(
 				@ModelAttribute("productoModif") @Valid Producto productoModif,
 				BindingResult bindingResult) {
 			
-			//comprobar que es valido 
 			if (bindingResult.hasErrors()) {
 				return "modif-producto";  
 			}
-
 			productoService.modificar(productoModif);
+			return "redirect:/comercio/productos"; 
+		}
+		
+		@GetMapping(value = "/producto/delete")  //  comercio/producto/delete?id=1
+		public String borrarProducto(
+				@RequestParam("id") String productId) {
+		
+			productoService.borrar(productId);
 			return "redirect:/comercio/productos"; 
 		}
 

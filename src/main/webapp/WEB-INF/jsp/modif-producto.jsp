@@ -27,7 +27,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form method="POST" modelAttribute="productoModif"
+		<form:form method="POST" modelAttribute="productoModif" 
 			class="form-horizontal">
 			<fieldset>
 				<legend>

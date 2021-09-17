@@ -48,7 +48,7 @@ public class ProductoServiceImpl implements ProductoService {
     	Producto p = productoRepositorio.getProductoPorId(producto.getIdProducto());
     	if( p != null) {
 	    	throw new GestionProductoException(producto.getIdProducto(),
-	     			   "No pudo crear . ya existe el producto con id ");
+	     			   "*******  No pudo crear el Producto******. Ya existe uno con id ");
     	}
 
     	return productoRepositorio.crearProducto(producto); 
